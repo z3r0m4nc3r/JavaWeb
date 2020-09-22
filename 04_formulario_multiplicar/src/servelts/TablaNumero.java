@@ -1,4 +1,4 @@
-package servlets;
+package servelts;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,25 +9,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-@WebServlet("/SaludoServlet")
-public class SaludoServlet extends HttpServlet {
+@WebServlet("/TablaNumero")
+public class TablaNumero extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		out.println("<html><body>");
-		out.println("<center>");
-		for(int i=1;i<=6;i++) {
-			out.println("<h"+i+">Bienvenido a mi servlet</h"+i+">");
+		
+		int numero = Integer.parseInt(request.getParameter("numero"));
+		out.println("Tabla del "+numero);
+		out.println("<table border=\"1\">");
+			
+			for(int fila=1;fila<=10;fila++) {
+				out.println("<tr>");
+				out.println("<td>"+numero+"X"+fila+"</td>");
+				out.println("<td> = "+numero*fila+"</td>");
+				out.println("</tr>");
 		}
-		out.println("</center>");
+		out.println("</table>");
+		
+		out.println("<a href=\"Tabla.html\"><input type=\"submit\" value=\"Volver\"/></a>");
+		
 		out.println("</body></html>");
 		out.close();
-		
 		
 	}
 

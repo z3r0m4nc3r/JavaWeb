@@ -10,24 +10,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/SaludoServlet")
-public class SaludoServlet extends HttpServlet {
+@WebServlet("/FichaServlet")
+public class FichaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		out.println("<html><body>");
-		out.println("<center>");
-		for(int i=1;i<=6;i++) {
-			out.println("<h"+i+">Bienvenido a mi servlet</h"+i+">");
-		}
-		out.println("</center>");
+		String nombre=request.getParameter("nombre");
+		int edad = Integer.parseInt(request.getParameter("edad"));
+		String sexo = request.getParameter("sexo");
+		String mensaje = sexo+" "+nombre+" Bienvenido";
+		mensaje+=edad>18?" eres mayor de edad":" eres menor de edad";
+		
+		out.println("<h1>"+mensaje+"</h1>");
+
 		out.println("</body></html>");
 		out.close();
-		
 		
 	}
 

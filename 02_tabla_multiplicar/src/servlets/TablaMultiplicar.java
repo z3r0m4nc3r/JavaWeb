@@ -10,21 +10,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/SaludoServlet")
-public class SaludoServlet extends HttpServlet {
+@WebServlet("/TablaMultiplicar")
+public class TablaMultiplicar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+     
+protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		out.println("<html><body>");
-		out.println("<center>");
-		for(int i=1;i<=6;i++) {
-			out.println("<h"+i+">Bienvenido a mi servlet</h"+i+">");
+		out.println("<table style=\"width:100%\">");
+		for(int col=1;col<=10;col++) {
+			out.println("<tr>");
+			
+			for(int fila=1;fila<=10;fila++) {
+				
+				out.println("<td>"+col*fila+"</td>");
+			}
+		
+			out.println("</tr>");
 		}
-		out.println("</center>");
+		out.println("</table>");
 		out.println("</body></html>");
 		out.close();
 		
