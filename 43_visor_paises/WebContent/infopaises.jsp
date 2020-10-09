@@ -1,4 +1,5 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,8 +37,9 @@
 <c:if test="${!empty sessionScope.paisSeleccionado}">
 <h4>Nombre: ${sessionScope.paisSeleccionado.nombre}</h4> 
 <h4>Capital: ${sessionScope.paisSeleccionado.capital}</h4> 
-<h4>Region: ${sessionScope.paisSeleccionado.region}</h4> 
-<h4>Habitantes: ${sessionScope.paisSeleccionado.habitantes}</h4><br/>
+<h4>Region: ${sessionScope.paisSeleccionado.region}</h4>
+
+<h4>Habitantes: <fmt:formatNumber pattern="###,###.##">${sessionScope.paisSeleccionado.habitantes}</fmt:formatNumber></h4><br/>
 
 
 <img height=100 width=200 alt="Bandera" src="${sessionScope.paisSeleccionado.bandera}">

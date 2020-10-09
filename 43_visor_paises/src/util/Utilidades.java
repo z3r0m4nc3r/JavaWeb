@@ -6,6 +6,7 @@ import model.Pais;
 
 public class Utilidades {
 	public static Pais adaptadorPais(JSONObject object) {
+		
 		return new Pais((String)object.get("name"),
 				(String)object.get("capital"),
 				(String)object.get("region"),

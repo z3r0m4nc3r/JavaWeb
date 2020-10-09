@@ -6,13 +6,15 @@ public class Pais {
 	private String region;
 	private long habitantes;
 	private String bandera;
-	public Pais(String nombre, String capital, String region, long habitantes, String bandera) {
+	
+	public Pais(String nombre, String capital, String region, long habitantes, String bandera ) {
 		super();
 		this.nombre = nombre;
 		this.capital = capital;
 		this.region = region;
 		this.habitantes = habitantes;
 		this.bandera = bandera;
+		
 	}
 	public String getNombre() {
 		return nombre;
@@ -44,6 +46,7 @@ public class Pais {
 	public void setBandera(String bandera) {
 		this.bandera = bandera;
 	}
+	
 
 	
 }

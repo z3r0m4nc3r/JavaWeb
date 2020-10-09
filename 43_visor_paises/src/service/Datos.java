@@ -19,7 +19,7 @@ public class Datos {
 				URL dir=new URL("http://restcountries.eu/rest/v2/all");
 				HttpURLConnection conn=(HttpURLConnection)dir.openConnection();
 				array = (JSONArray) parser.parse(new InputStreamReader(conn.getInputStream()));
-				Stream<JSONObject> st = (Stream<JSONObject>)array.stream();
+				Stream<JSONObject> st = (Stream<JSONObject>)array.parallelStream();
 				return st;
 			} catch (ParseException e) {
 				e.printStackTrace();

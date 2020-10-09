@@ -24,9 +24,7 @@ public class DatosPaisAction extends HttpServlet {
 				response.setHeader("Expires", "0");
 				HttpSession sesion=request.getSession();
 				
-				if(sesion.getAttribute("paisSeleccionado")!=null) {
-					sesion.removeAttribute("paisSeleccionado");
-				}
+				
 				sesion.setAttribute("paisSeleccionado", servicePais.recuperarPaises().get((String)request.getParameter("pais")));
 				
 	}
