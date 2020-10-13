@@ -27,7 +27,7 @@ private PaisesService servicePais;
 				response.setHeader("Expires", "0");
 				
 				
-		List<String> nombresPaises=servicePais.recuperarPaises().keySet().parallelStream().sorted().collect(Collectors.toList());
+		List<String> nombresPaises=servicePais.recuperarPaises().keySet().stream().sorted().collect(Collectors.toList());
 		
 		ServletContext context= request.getServletContext();
 		
