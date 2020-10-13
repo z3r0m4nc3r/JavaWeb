@@ -6,6 +6,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.stream.Stream;
 
+import javax.net.ssl.HttpsURLConnection;
+
 import org.json.simple.*;
 import org.json.simple.parser.*;
 
@@ -37,7 +39,7 @@ public class Datos {
 		JSONArray array = null;
 			try {
 				URL dir=new URL("https://opendata.ecdc.europa.eu/covid19/casedistribution/json/");
-				HttpURLConnection conn=(HttpURLConnection)dir.openConnection();
+				HttpsURLConnection conn=(HttpsURLConnection)dir.openConnection();
 				JSONObject a = (JSONObject) parser.parse(new InputStreamReader(conn.getInputStream()));
 				array = (JSONArray)a.get("records");
 				

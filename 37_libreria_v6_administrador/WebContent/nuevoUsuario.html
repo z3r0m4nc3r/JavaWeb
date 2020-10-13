@@ -1,6 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript">
+
+	function validacion(){
+		
+		var password = document.getElementById("password").value;
+		var repPassword = document.getElementById("repPassword").value;
+		var email = document.getElementById("email").value;
+		var telefono = document.getElementById("usuario").value;
+		
+		if(password!=repPassword){
+			alert("Los campos Contraseña y Repetir Contraseña deben coincidir");
+			return false;
+		}
+		if(password.length<6){
+			alert("La contraseña debe incluir más de 6 caracteres");
+			return false;
+			
+		}
+		if(!email.includes("@")&&!email.includes(".")){
+			alert("Introduce un email válido");
+			return false;
+		}
+		if(!telefono.starsWith("9")||!telefono.starsWith("6")){
+			alert("El número de telefono debe comenzar por 6 o 9");
+			return false;
+		}
+		return true;
+	}
+
+
+
+</script>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -16,13 +48,14 @@
 <body>
 <div class="container-fluid" align="center">
 <h2>Alta de Nuevo Usuario</h2>
-	<form action="Controller?option=doAltaNuevo" method="post">
+	<form action="Controller?option=doAltaNuevo" method="post" onsubmit="return validacion()">
 	
 
-		Usuario: <br/><input type="text" class="form-check-input" style="width:10%" name="usuario" /><br />
-		Contraseña: <br/><input type="password" class="form-check-input" style="width:10%" name="password"><br />
-		Email: <br/><input type="text" class="form-check-input" style="width:10%" name="email"><br />
-		Telefono: <br/><input type="number" class="form-check-input" style="width:10%" name="telefono"><br />
+		Usuario: <br/><input type="text" class="form-check-input" id="usuario" style="width:10%" name="usuario" /><br />
+		Contraseña: <br/><input type="password" id="password" class="form-check-input" style="width:10%" name="password"><br />
+		Repetir Contraseña: <br/><input type="password" id="repPassword" class="form-check-input" style="width:10%" name="repPassword"><br />
+		Email: <br/><input type="email" id="email" class="form-check-input" style="width:10%" name="email"><br />
+		Telefono: <br/><input type="number" id="telefono" class="form-check-input" style="width:10%" name="telefono"><br />
 	
 		<input type="submit" class="btn btn-default" value="Enviar" />
 	</form>
