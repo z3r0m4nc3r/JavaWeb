@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet" href="websocket.css">
+<script type="text/javascript">
+var cajadatos, socket;
+function conectar(){
+	cajadatos= document.getElementById("cajadatos");
+	socket = new WebSocket("ws://localhost:8080/54_contador_sesiones_websocket_servidor/contador");
+	socket.addEventListener("message", recibido);
+	
+}
+function recibido(evento){
+	
+	cajadatos.innerHTML = "Sesiones activas: " + evento.data;
+
+}
+function desconectar(){
+	socket.close();
+	cajadatos.innerHTML = "Desconectado del Servidor";
+}
+
+window.addEventListener("load", iniciar);
+</script>
+<title>Prueba de WenSocket</title>
+</head>
+<body>
+<section id="cajaFormulario">
+	<form name="formulario">
+		
+		<button type="button" id="boton" onclick="conectar();">Conectar</button>
+		<button type="button" id="boton" onclick="desconectar();">Desconectar</button>
+	
+	</form>
+
+</section>
+<section id="cajadatos">
+
+</section>
+</body>
+</html>
